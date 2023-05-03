@@ -23,12 +23,17 @@
         <p class="text"><%= article.tags %></p>
         <p class="text"><%= article.author %></p>
         <p class="text"><%= article.likes %></p>
+        <a href="/articles/<%= article.id %>/likes">
+          <button>Like</button>
+        </a>
+        <div>
         <a href="/articles/<%= article.id %>/edit">
           <button>Edit</button>
         </a>
         <a href="/articles/<%= article.id %>/delete">
           <button>Delete</button>
         </a>
+        </div>
       </div>
     </section>
   </body>
