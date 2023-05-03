@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container flex justify-between align-center">
+        <h1>Articles</h1>
+        <nav>
+          <a class="links" href="/articles">Back to Articles</a>
+        </nav>
+      </div>
+    </header>
+    <section class="container flex">
+      <div class="flex-box">
+        <form action="/articles" method="POST">
+          <input type="text" name="title" class="form-control" placeholder="Enter Title" />
+          <input type="text" name="description" class="form-control" placeholder="Describe" />
+          <input type="text" name="tags" class="form-control" placeholder="Enter tags" />
+          <input type="text" name="author" class="form-control" placeholder="Author Name" />
+          <input type="number" name="likes" class="form-control" placeholder="likes" />
+          <input type="submit" class="btn" value="Add Article" />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
