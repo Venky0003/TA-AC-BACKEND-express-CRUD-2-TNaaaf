@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="container flex justify-between align-center">
+        <h1>Books</h1>
+        <nav>
+          <a href="/books/new">Add Book</a>
+        </nav>
+      </div>
+    </header>
+    <section class="container">
+      <div>
+        <% books.forEach((book) => { %>
+        <h2 class="title">
+          <a href="/books/<%= book._id %>"><%= book.title %></a>
+        </h2>
+        <P class="summary"><%= book.summary %></P>
+        <p class="summary">pages:<%= book.pages %></p>
+        <p class="summary"><%= book.publication %></p>
+
+        <hr>
+        <% }) %> 
+      </div>
+    </section>
+  </body>
+</html>
