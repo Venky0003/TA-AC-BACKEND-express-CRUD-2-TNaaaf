@@ -19,9 +19,19 @@
     <section class="container">
       <div>
         <h3 class="title"><%= book.title %></h3>
-        <p class="summary"><%= book.summary %></p>
-        <p class="summary">Pages:<%= book.pages %></p>
-        <p class="summary"><%= book.publication %></p>
+        <p class="summary">Summary: <%= book.summary %></p>
+        <p class="summary">Pages: <%= book.pages %></p>
+        <p class="summary">Publisher: <%= book.publication %></p>
+        <p class="summary">
+          Author Name: <% book.authors.forEach((author) => { %>
+            <%= author.name %>
+          <% }) %>
+        </p>
+        <p class="summary">
+          Category: <% book.categories.forEach((category) => { %>
+            <%= category.name %>
+          <% }) %>
+        </p>
         <button class="btn-one">
           <a href="/books/<%= book.id %>/edit">edit</a>
         </button>

@@ -7,7 +7,7 @@ var Author = require('../models/author');
 router.get('/', (req, res, next) => {
   Author.find({})
     .then((author) => {
-        console.log(author)
+        // console.log(author)
       res.render('authors', { authors: author });
     })
     .catch((err) => {

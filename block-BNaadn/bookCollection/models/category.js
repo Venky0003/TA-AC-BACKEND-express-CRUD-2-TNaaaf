@@ -2,7 +2,8 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let categorySchema = new Schema({
-    categoryname:[{type:String, required: true}]
+    name:[{type:String, required: true}],
+    bookId: [{ type: Schema.Types.ObjectId, ref: 'Book', required: true }],
 });
 
 
