@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="container flex justify-between align-center">
+        <h1>Books</h1>
+        <nav>
+          <a href="/books">Back to list</a>
+        </nav>
+        <nav>
+          <a href="/authors">Add New Author to list</a>
+        </nav>
+        <nav>
+          <a href="/Categories">Add Categories To list</a>
+        </nav>
+      </div>
+    </header>
+    <section class="container">
+      <div class="flex-50">
+        <form action="/books" method="POST">
+          <h2 class="form-header text-center">Add Book Details</h2>
+          <input
+            class="form-control"
+            type="text"
+            name="title"
+            placeholder="Add Title"
+          />
+          <textarea
+            class="form-control-text"
+            name="summary"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Add Summary of about 200-500 Words"
+          ></textarea>
+          <input
+            class="form-control"
+            type="Number"
+            name="pages"
+            placeholder="Add No of Pages"
+          />
+          <input
+            class="form-control"
+            type="text"
+            name="publication"
+            placeholder="Add publication"
+          />
+          <select class="form-control" name="authors">
+            <% authors.forEach((author) => { %>
+            <option value="<%= author.id %>"><%= author.name %></option>
+            <% }) %>
+            </select>
+            <select class="form-control" name="categories">
+              <% categories.forEach((category) => { %>
+                <option value="<%= category._id %>"><%= category.name %></option>
+              <% }) %>
+            </select>
+          <input type="submit" value="Add Book" class="btn" />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

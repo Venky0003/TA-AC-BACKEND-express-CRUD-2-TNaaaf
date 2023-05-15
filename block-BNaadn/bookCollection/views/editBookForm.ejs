@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="container flex justify-between align-center">
+        <h1>Books Details</h1>
+        <nav>
+          <a href="/books/<%= book.id%>">Back to book</a>
+        </nav>
+      </div>
+    </header>
+    <section class="container">
+      <div class="flex-50">
+        <form action="/books/<%= book.id %>" method="POST">
+          <h2 class="form-header text-center">Update The Book Details</h2>
+          <input
+            type="text"
+            class="form-control"
+            name="title"
+            placeholder="Add Title"
+            value="<%= book.title%>"
+          />
+          <textarea
+            name="summary"
+            class="form-control-text"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Add Summary"
+          >
+          <%= book.summary %>
+        </textarea
+          >
+          <input
+            type="Number"
+            class="form-control"
+            name="pages"
+            placeholder="Add No of Pages"
+            value="<%= book.pages %>"
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="publication"
+            placeholder="Add publication"
+            value="<%= book.publication %>"
+          />
+          <select  class="form-control" name="authors" >
+            <% book.authors.forEach((author) => { %>
+              <option value="<%= author._id %>" selected><%= author.name %></option>
+            <% }) %>
+          </select>
+          <select  class="form-control" name="categories" >
+            <% book.categories.forEach((category) => { %>
+              <option value="<%= category._id %>" selected><%= category.name %></option>
+            <% }) %>
+          </select>
+          <input type="submit" value="Upadte Book" class="btn" />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
