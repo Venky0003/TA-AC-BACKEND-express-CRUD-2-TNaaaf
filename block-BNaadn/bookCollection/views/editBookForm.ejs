@@ -52,6 +52,16 @@
             placeholder="Add publication"
             value="<%= book.publication %>"
           />
+          <select  class="form-control" name="authors" >
+            <% book.authors.forEach((author) => { %>
+              <option value="<%= author._id %>" selected><%= author.name %></option>
+            <% }) %>
+          </select>
+          <select  class="form-control" name="categories" >
+            <% book.categories.forEach((category) => { %>
+              <option value="<%= category._id %>" selected><%= category.name %></option>
+            <% }) %>
+          </select>
           <input type="submit" value="Upadte Book" class="btn" />
         </form>
       </div>

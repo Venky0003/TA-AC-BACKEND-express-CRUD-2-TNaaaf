@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Book = require('../models/book');
 var Author = require('../models/author');
-
+var Category = require('../models/category');
 // to list all the books
 router.get('/', (req, res, next) => {
   Book.find()
@@ -14,21 +14,18 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// Adding  new book details
-router.get('/new', (req, res) => {
-  res.render('addBooks');
-});
-
 // render the addbooks
-router.get('/addBooks', (req, res) => {
-  Author.find()
-    .then((author) => {
-      console.log(author);
-      res.render('addBooks', { authors});
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+router.get('/new', (req, res) => {
+  Promise.all([Author.find(),
+    Category.find()])
+      .then(([authors, categories]) => {
+        // console.log(author);
+        // console.log(categories);
+        res.render('addBooks', { authors, categories });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 });
 
 // to post book details
@@ -42,12 +39,12 @@ router.post('/', (req, res) => {
     });
 });
 
-
-
 router.get('/:id', (req, res, next) => {
   var id = req.params.id;
 
   Book.findById(id)
+  .populate('authors')
+  .populate('categories')
     .then((book) => {
       res.render('bookDetails', { book: book });
     })
@@ -61,6 +58,8 @@ router.get('/:id', (req, res, next) => {
 router.get('/:id/edit', (req, res, next) => {
   let id = req.params.id;
   Book.findById(id)
+  .populate('authors')
+  .populate('categories')
     .then((book) => {
       res.render('editBookForm', { book: book });
     })
@@ -93,8 +92,5 @@ router.get('/:id/delete', (req, res, next) => {
       if (err) return next(err);
     });
 });
-
-
-
 
 module.exports = router;
